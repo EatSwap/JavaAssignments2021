@@ -25,7 +25,7 @@ public class C20_16 {
 	}
 
 	public static void main(String[] args) {
-		int dup = countDuplicate("I was a student. McDonald's wAs my FAVOURITE!!! Thanks.");
+		int dup = countDuplicate("I was a student. McDonald's wAs my's FAVOURITE!!! Thanks.");
 
 		// dup == 1
 		System.out.printf("%d word(s) has one or more occurrences.\n", dup);
