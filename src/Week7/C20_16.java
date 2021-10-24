@@ -15,13 +15,11 @@ public class C20_16 {
 		Set<String> wordSet = new HashSet<>();
 		Set<String> duplicatedWords = new HashSet<>();
 		for (var i : words) {
-			if (i.isEmpty()) {
+			if (i.isEmpty())
 				continue;
-			}
 			String lower = i.toLowerCase();
-			if (!wordSet.add(lower)) {
+			if (!wordSet.add(lower))
 				duplicatedWords.add(lower);
-			}
 		}
 		return duplicatedWords.size();
 	}
