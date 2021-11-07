@@ -8,7 +8,7 @@ package Week9.P_10_12;
  */
 
 // This class is copied from Fig. 10.4
-public abstract class Employee {
+public abstract class Employee implements Payable {
 	private String firstName;
 	private String lastName;
 	private String socialSecurityNumber;

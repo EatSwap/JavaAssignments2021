@@ -27,6 +27,11 @@ public class SalariedEmployee extends Employee {
 	}
 
 	@Override
+	public double getPaymentAmount() {
+		return getWeeklySalary();
+	}
+
+	@Override
 	public double earnings() {
 		return getWeeklySalary();
 	}
