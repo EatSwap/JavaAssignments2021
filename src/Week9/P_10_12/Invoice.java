@@ -16,84 +16,84 @@ public class Invoice implements Payable {
 	private double pricePerItem;
 
 	public Invoice(String partNumber, String partDescription, int quantity, double pricePerItem) {
-        this.partNumber = partNumber;
-        this.partDescription = partDescription;
-        this.quantity = quantity;
-        this.pricePerItem = pricePerItem;
-    }
+		this.partNumber = partNumber;
+		this.partDescription = partDescription;
+		this.quantity = quantity;
+		this.pricePerItem = pricePerItem;
+	}
 
 	public String getPartNumber() {
-        return partNumber;
-    }
-
-	public String getPartDescription() {
-        return partDescription;
-    }
-
-	public int getQuantity() {
-        return quantity;
-    }
-
-	public double getPricePerItem() {
-        return pricePerItem;
-    }
+		return partNumber;
+	}
 
 	public void setPartNumber(String partNumber) {
-        this.partNumber = partNumber;
-    }
+		this.partNumber = partNumber;
+	}
+
+	public String getPartDescription() {
+		return partDescription;
+	}
 
 	public void setPartDescription(String partDescription) {
-        this.partDescription = partDescription;
-    }
+		this.partDescription = partDescription;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
 
 	public void setQuantity(int quantity) {
 		if (quantity < 0) {
 			throw new IllegalArgumentException("Quantity must be greater than or equal to 0");
 		}
-        this.quantity = quantity;
-    }
+		this.quantity = quantity;
+	}
+
+	public double getPricePerItem() {
+		return pricePerItem;
+	}
 
 	public void setPricePerItem(double pricePerItem) {
 		if (pricePerItem < 0) {
 			throw new IllegalArgumentException("Price per item must be greater than or equal to 0");
 		}
-        this.pricePerItem = pricePerItem;
-    }
+		this.pricePerItem = pricePerItem;
+	}
 
 	public double getInvoiceAmount() {
-        return quantity * pricePerItem;
-    }
+		return quantity * pricePerItem;
+	}
 
 	@Override
-    public String toString() {
-        return String.format("%s: %n%s: %s (%s) %n%s: %d %n%s: $%,.2f",
-                "invoice",
-                "part number", getPartNumber(), getPartDescription(),
-                "quantity", getQuantity(),
-                "price per item", getPricePerItem());
-    }
+	public String toString() {
+		return String.format("%s: %n%s: %s (%s) %n%s: %d %n%s: $%,.2f",
+				"invoice",
+				"part number", getPartNumber(), getPartDescription(),
+				"quantity", getQuantity(),
+				"price per item", getPricePerItem());
+	}
 
 	@Override
-    public boolean equals(Object o) {
-        if (o == this) return true;
-        if (!(o instanceof Invoice)) {
-            return false;
-        }
-        Invoice invoice = (Invoice) o;
-        return partNumber.equals(invoice.partNumber) &&
-                partDescription.equals(invoice.partDescription) &&
-                quantity == invoice.quantity &&
-                Double.compare(pricePerItem, invoice.pricePerItem) == 0;
-    }
+	public boolean equals(Object o) {
+		if (o == this) return true;
+		if (!(o instanceof Invoice)) {
+			return false;
+		}
+		Invoice invoice = (Invoice) o;
+		return partNumber.equals(invoice.partNumber) &&
+				partDescription.equals(invoice.partDescription) &&
+				quantity == invoice.quantity &&
+				Double.compare(pricePerItem, invoice.pricePerItem) == 0;
+	}
 
 	@Override
-    public int hashCode() {
-        return Objects.hash(partNumber, partDescription, quantity, pricePerItem);
-    }
+	public int hashCode() {
+		return Objects.hash(partNumber, partDescription, quantity, pricePerItem);
+	}
 
 	@Override
-    public double getPaymentAmount() {
-        return getQuantity() * getPricePerItem();
-    }
+	public double getPaymentAmount() {
+		return getQuantity() * getPricePerItem();
+	}
 
 }

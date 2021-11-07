@@ -8,5 +8,5 @@ package Week9.P_10_12;
  */
 
 public interface Payable {
-	public abstract double getPaymentAmount();
+	double getPaymentAmount();
 }
