@@ -44,6 +44,11 @@ public abstract class Employee implements Payable {
 	}
 
 	@Override
+	public double getPaymentAmount() {
+		return earnings();
+	}
+
+	@Override
 	public String toString() {
 		return "Employee{" +
 				"firstName='" + firstName + '\'' +
