@@ -34,4 +34,10 @@ public record Rectangle(int x1, int y1, int x2, int y2, Color color, boolean fil
 			g.drawRect(getUpperLeftX(), getUpperLeftY(), getWidth(), getHeight());
 		}
 	}
+
+	public Rectangle {
+		x1 = x2 = y1 = y2 = 0;
+		color = Color.BLACK;
+		filled = false;
+	}
 }

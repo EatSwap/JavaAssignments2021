@@ -34,4 +34,10 @@ public record Oval(int x1, int y1, int x2, int y2, Color color, boolean filled) 
 			g.drawOval(getUpperLeftX(), getUpperLeftY(), getWidth(), getHeight());
 		}
 	}
+
+	public Oval {
+		x1 = x2 = y1 = y2 = 0;
+		color = Color.BLACK;
+		filled = false;
+	}
 }
