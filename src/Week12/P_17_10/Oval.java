@@ -5,11 +5,11 @@ import java.awt.*;
 /**
  * Author: Lam Haoyin
  * GPG: C00E4E4FCC31CDF3
- * Date: 21:00 27/11/21
+ * Date: 21:06 27/11/21
  * Project: JavaAssignments2021
  */
 
-public record Rectangle(int x1, int y1, int x2, int y2, Color color, boolean filled) {
+public record Oval(int x1, int y1, int x2, int y2, Color color, boolean filled) {
 	public int getUpperLeftX() {
 		return Math.min(x1, x2);
 	}
@@ -29,9 +29,9 @@ public record Rectangle(int x1, int y1, int x2, int y2, Color color, boolean fil
 	public void draw(Graphics g) {
 		g.setColor(color);
 		if (filled) {
-			g.fillRect(getUpperLeftX(), getUpperLeftY(), getWidth(), getHeight());
+			g.fillOval(getUpperLeftX(), getUpperLeftY(), getWidth(), getHeight());
 		} else {
-			g.drawRect(getUpperLeftX(), getUpperLeftY(), getWidth(), getHeight());
+			g.drawOval(getUpperLeftX(), getUpperLeftY(), getWidth(), getHeight());
 		}
 	}
 }
