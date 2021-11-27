@@ -17,6 +17,7 @@ public class ReadFromStdin {
         try {
             out = new Formatter("numbers.txt");
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
             System.out.println("Cannot open 'number.txt' to write.");
             return;
         }
@@ -27,6 +28,9 @@ public class ReadFromStdin {
 
         for (int i = 0; true; i++) {
             System.out.printf("Enter your #%d selection of the vote (0 to stop): ", i);
+            if (!stdin.hasNextInt()) {
+                break;
+            }
             int vote = stdin.nextInt();
             if (vote == 0) {
                 break;
