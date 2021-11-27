@@ -85,4 +85,32 @@ public class DrawPanel extends javax.swing.JPanel {
 			rectangle.draw(g);
 		}
 	}
+
+	public Line[] getLines() {
+		return lines;
+	}
+
+	public void setLines(Line[] lines) {
+		this.lines = lines;
+	}
+
+	public Oval[] getOvals() {
+		return ovals;
+	}
+
+	public void setOvals(Oval[] ovals) {
+		this.ovals = ovals;
+	}
+
+	public Rectangle[] getRectangles() {
+		return rectangles;
+	}
+
+	public void setRectangles(Rectangle[] rectangles) {
+		this.rectangles = rectangles;
+	}
+
+	public String getStatus() {
+		return "Lines: " + lines.length + ", Ovals: " + ovals.length + ", Rectangles: " + rectangles.length;
+	}
 }
