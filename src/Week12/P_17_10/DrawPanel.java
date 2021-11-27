@@ -11,16 +11,16 @@ import java.util.Random;
  */
 
 public class DrawPanel extends javax.swing.JPanel {
-	private MyLine[] lines = null;
+	private Line[] lines = null;
 
 	public DrawPanel() {
 		setBackground(java.awt.Color.WHITE);
 
 		Random random = new Random();
-		lines = new MyLine[random.nextInt(5) + 5];
+		lines = new Line[random.nextInt(5) + 5];
 
 		for (int i = 0; i < lines.length; i++) {
-			lines[i] = new MyLine(
+			lines[i] = new Line(
 				random.nextInt(300),
 				random.nextInt(300),
 				random.nextInt(300),
@@ -38,7 +38,7 @@ public class DrawPanel extends javax.swing.JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-		for (MyLine line : lines) {
+		for (Line line : lines) {
 			line.draw(g);
 		}
 	}
