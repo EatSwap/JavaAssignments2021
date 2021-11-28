@@ -13,7 +13,7 @@ public class TestDraw {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
 
-		DrawPanel panel = new DrawPanel();
+		DrawPanel panel = new DrawPanel(5, 5, 5);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(panel);
 

@@ -11,11 +11,11 @@ import java.util.Objects;
  */
 
 public abstract class Shape {
-	protected final int x1;
-	protected final int y1;
-	protected final int x2;
-	protected final int y2;
-	protected final Color color;
+	protected int x1;
+	protected int y1;
+	protected int x2;
+	protected int y2;
+	protected Color color;
 
 	public Shape(int x1, int y1, int x2, int y2, Color color) {
 		this.x1 = x1;
@@ -23,6 +23,10 @@ public abstract class Shape {
 		this.x2 = x2;
 		this.y2 = y2;
 		this.color = color;
+	}
+
+	public Shape() {
+		this(0, 0, 0, 0, Color.BLACK);
 	}
 
 	public int getX1() {
@@ -43,6 +47,26 @@ public abstract class Shape {
 
 	public Color getColor() {
 		return color;
+	}
+
+	public void setX1(int x1) {
+		this.x1 = x1;
+	}
+
+	public void setY1(int y1) {
+		this.y1 = y1;
+	}
+
+	public void setX2(int x2) {
+		this.x2 = x2;
+	}
+
+	public void setY2(int y2) {
+		this.y2 = y2;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
 	}
 
 	@Override

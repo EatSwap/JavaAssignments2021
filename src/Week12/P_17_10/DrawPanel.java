@@ -11,18 +11,16 @@ import java.util.Random;
  */
 
 public class DrawPanel extends javax.swing.JPanel {
-	private Line[] lines = null;
-	private Oval[] ovals = null;
-	private Rectangle[] rectangles = null;
+	private Shape[] shapes = null;
 
-	public DrawPanel() {
+	public DrawPanel(int linesCnt, int ovalsCnt, int rectanglesCnt) {
 		setBackground(java.awt.Color.WHITE);
+		shapes = new Shape[linesCnt + ovalsCnt + rectanglesCnt];
 
 		Random random = new Random();
-		lines = new Line[random.nextInt(5) + 1];
 
-		for (int i = 0; i < lines.length; i++) {
-			lines[i] = new Line(
+		for (int i = 0; i < linesCnt; i++) {
+			shapes[i] = new Line(
 				random.nextInt(300),
 				random.nextInt(300),
 				random.nextInt(300),
@@ -35,9 +33,8 @@ public class DrawPanel extends javax.swing.JPanel {
 			);
 		}
 
-		ovals = new Oval[random.nextInt(5) + 1];
-		for (int i = 0; i < ovals.length; i++) {
-			ovals[i] = new Oval(
+		for (int i = 0; i < ovalsCnt; i++) {
+			shapes[i] = new Oval(
 				random.nextInt(300),
 				random.nextInt(300),
 				random.nextInt(300),
@@ -52,9 +49,8 @@ public class DrawPanel extends javax.swing.JPanel {
 
 		}
 
-		rectangles = new Rectangle[random.nextInt(5) + 1];
-		for (int i = 0; i < rectangles.length; i++) {
-			rectangles[i] = new Rectangle(
+		for (int i = 0; i < rectanglesCnt; i++) {
+			shapes[i] = new Rectangle(
 				random.nextInt(300),
 				random.nextInt(300),
 				random.nextInt(300),
@@ -72,45 +68,30 @@ public class DrawPanel extends javax.swing.JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-
-		for (Line line : lines) {
-			line.draw(g);
-		}
-
-		for (Oval oval : ovals) {
-			oval.draw(g);
-		}
-
-		for (Rectangle rectangle : rectangles) {
-			rectangle.draw(g);
+		for (Shape shape : shapes) {
+			shape.draw(g);
 		}
 	}
 
-	public Line[] getLines() {
-		return lines;
+	public Shape[] getShapes() {
+		return shapes;
 	}
 
-	public void setLines(Line[] lines) {
-		this.lines = lines;
-	}
-
-	public Oval[] getOvals() {
-		return ovals;
-	}
-
-	public void setOvals(Oval[] ovals) {
-		this.ovals = ovals;
-	}
-
-	public Rectangle[] getRectangles() {
-		return rectangles;
-	}
-
-	public void setRectangles(Rectangle[] rectangles) {
-		this.rectangles = rectangles;
+	public void setShapes(Shape[] shapes) {
+		this.shapes = shapes;
 	}
 
 	public String getStatus() {
-		return "Lines: " + lines.length + ", Ovals: " + ovals.length + ", Rectangles: " + rectangles.length;
+		int L = 0, O = 0, R = 0;
+		for (Shape shape : shapes) {
+			if (shape instanceof Line) {
+				L++;
+			} else if (shape instanceof Oval) {
+				O++;
+			} else if (shape instanceof Rectangle) {
+				R++;
+			}
+		}
+		return "Lines: " + L + ", Ovals: " + O + ", Rectangles: " + R;
 	}
 }

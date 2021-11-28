@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 
 public final class Rectangle extends Shape {
-	private final boolean filled;
+	private boolean filled;
 
 	public Rectangle(int x1, int y1, int x2, int y2, Color color, boolean filled) {
 		super(x1, y1, x2, y2, color);
@@ -71,5 +71,9 @@ public final class Rectangle extends Shape {
 
 	public boolean isFilled() {
 		return filled;
+	}
+
+	public void setFilled(boolean filled) {
+		this.filled = filled;
 	}
 }
