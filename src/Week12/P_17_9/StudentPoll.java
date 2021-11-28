@@ -35,7 +35,6 @@ public class StudentPoll {
                 }
             } catch (ArrayIndexOutOfBoundsException e) {
                 e.printStackTrace();
-                // System.out.printf("   responses[%d] = %d\n\n", i, selection);
             }
         }
 
