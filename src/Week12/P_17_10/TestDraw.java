@@ -13,14 +13,26 @@ public class TestDraw {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
 
-		DrawPanel panel = new DrawPanel(5, 5, 5);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(panel);
 
-		JLabel statusBar = new JLabel(panel.getStatus());
-		frame.add(statusBar, "South");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		JOptionPane pane = new JOptionPane();
+		String linesCnt = JOptionPane.showInputDialog(pane, "Enter the number of lines you want to draw");
+		int lines = Integer.parseInt(linesCnt);
+
+		String ovalsCnt = JOptionPane.showInputDialog(pane, "Enter the number of ovals you want to draw");
+		int ovals = Integer.parseInt(ovalsCnt);
+
+		String rectsCnt = JOptionPane.showInputDialog(pane, "Enter the number of rectangles you want to draw");
+		int rects = Integer.parseInt(rectsCnt);
 
 		frame.setSize(300, 300);
+		frame.setVisible(true);
+
+		DrawPanel panel = new DrawPanel(lines, ovals, rects);
+		frame.add(panel);
+		JLabel statusBar = new JLabel(panel.getStatus());
+		frame.add(statusBar, "South");
 		frame.setVisible(true);
 	}
 }
