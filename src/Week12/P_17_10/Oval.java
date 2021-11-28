@@ -1,7 +1,6 @@
 package Week12.P_17_10;
 
 import java.awt.*;
-import java.util.Objects;
 
 /**
  * Author: Lam Haoyin
@@ -10,75 +9,23 @@ import java.util.Objects;
  * Project: JavaAssignments2021
  */
 
-public final class Oval extends Shape {
-	private boolean filled;
-
+public final class Oval extends BoundedShape {
 	public Oval(int x1, int y1, int x2, int y2, Color color, boolean filled) {
-		super(x1, y1, x2, y2, color);
-		this.filled = filled;
+		super(x1, y1, x2, y2, color, filled);
 	}
 
 	public Oval() {
 		super();
-		this.filled = false;
-	}
-
-	public int getUpperLeftX() {
-		return Math.min(x1, x2);
-	}
-
-	public int getUpperLeftY() {
-		return Math.min(y1, y2);
-	}
-
-	public int getWidth() {
-		return Math.abs(x1 - x2);
-	}
-
-	public int getHeight() {
-		return Math.abs(y1 - y2);
+		this.setFilled(false);
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(color);
-		if (filled) {
+		g.setColor(this.getColor());
+		if (this.isFilled()) {
 			g.fillOval(getUpperLeftX(), getUpperLeftY(), getWidth(), getHeight());
 		} else {
 			g.drawOval(getUpperLeftX(), getUpperLeftY(), getWidth(), getHeight());
 		}
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		if (!super.equals(o)) return false;
-		Oval oval = (Oval) o;
-		return filled == oval.filled;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(super.hashCode(), filled);
-	}
-
-	@Override
-	public String toString() {
-		return "Oval[" +
-			"x1=" + x1 + ", " +
-			"y1=" + y1 + ", " +
-			"x2=" + x2 + ", " +
-			"y2=" + y2 + ", " +
-			"color=" + color + ", " +
-			"filled=" + filled + ']';
-	}
-
-	public boolean isFilled() {
-		return filled;
-	}
-
-	public void setFilled(boolean filled) {
-		this.filled = filled;
 	}
 }

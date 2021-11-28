@@ -1,7 +1,6 @@
 package Week12.P_17_10;
 
 import java.awt.*;
-import java.util.Objects;
 
 /**
  * Author: Lam Haoyin
@@ -21,17 +20,12 @@ public final class Line extends Shape {
 
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(color);
-		g.drawLine(x1, y1, x2, y2);
+		g.setColor(this.getColor());
+		g.drawLine(this.getX1(), this.getY1(), this.getX2(), this.getY2());
 	}
 
 	@Override
 	public String toString() {
-		return "Line[" +
-			"x1=" + x1 + ", " +
-			"y1=" + y1 + ", " +
-			"x2=" + x2 + ", " +
-			"y2=" + y2 + ", " +
-			"color=" + color + ']';
+		return "Line{} " + super.toString();
 	}
 }
