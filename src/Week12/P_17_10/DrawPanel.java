@@ -33,7 +33,7 @@ public class DrawPanel extends javax.swing.JPanel {
 			);
 		}
 
-		for (int i = 0; i < ovalsCnt; i++) {
+		for (int i = linesCnt; i < ovalsCnt + linesCnt; i++) {
 			shapes[i] = new Oval(
 				random.nextInt(300),
 				random.nextInt(300),
@@ -49,7 +49,7 @@ public class DrawPanel extends javax.swing.JPanel {
 
 		}
 
-		for (int i = 0; i < rectanglesCnt; i++) {
+		for (int i = linesCnt + ovalsCnt; i < shapes.length; i++) {
 			shapes[i] = new Rectangle(
 				random.nextInt(300),
 				random.nextInt(300),
