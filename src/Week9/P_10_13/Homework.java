@@ -20,5 +20,5 @@ public class Homework {
 		for (var i : list) {
 			System.out.printf("I am %s, and I produce %.1f footprints in my lifetime!\n", i.toString(), i.getCarbonFootprint());
 		}
-    }
+	}
 }

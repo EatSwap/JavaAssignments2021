@@ -8,28 +8,28 @@ package Week10;
  */
 
 public class C11_21 {
-    private static void someMethod() {
-        System.out.println("I am someMethod");
-        try {
-            someMethod2();
-        } catch (Throwable e) {
-            System.out.println("I am someMethod catch");
-            // e.printStackTrace();
-            throw new RuntimeException("I am some exception caused when calling someMethod2!", e);
-        }
-    }
+	private static void someMethod() {
+		System.out.println("I am someMethod");
+		try {
+			someMethod2();
+		} catch (Throwable e) {
+			System.out.println("I am someMethod catch");
+			// e.printStackTrace();
+			throw new RuntimeException("I am some exception caused when calling someMethod2!", e);
+		}
+	}
 
-    public static void main(String[] args) {
-        try {
-            someMethod();
-        } catch (Throwable e) {
-            System.out.println("I am main catch");
-            e.printStackTrace();
-        }
-    }
+	public static void main(String[] args) {
+		try {
+			someMethod();
+		} catch (Throwable e) {
+			System.out.println("I am main catch");
+			e.printStackTrace();
+		}
+	}
 
-    private static void someMethod2() {
-        System.out.println("I am someMethod2");
-        throw new RuntimeException("I am some exception!");
-    }
+	private static void someMethod2() {
+		System.out.println("I am someMethod2");
+		throw new RuntimeException("I am some exception!");
+	}
 }

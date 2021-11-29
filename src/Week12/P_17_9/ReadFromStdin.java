@@ -12,36 +12,36 @@ import java.util.Scanner;
  */
 
 public class ReadFromStdin {
-    public static void main(String[] args) {
-        Formatter out;
-        try {
-            out = new Formatter("numbers.txt");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("Cannot open 'number.txt' to write.");
-            return;
-        }
-        assert out != null;
+	public static void main(String[] args) {
+		Formatter out;
+		try {
+			out = new Formatter("numbers.txt");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			System.out.println("Cannot open 'number.txt' to write.");
+			return;
+		}
+		assert out != null;
 
-        // Initialise stdin
-        var stdin = new Scanner(System.in);
+		// Initialise stdin
+		var stdin = new Scanner(System.in);
 
-        for (int i = 0; true; i++) {
-            System.out.printf("Enter your #%d selection of the vote (0 to stop): ", i);
-            if (!stdin.hasNextInt()) {
-                break;
-            }
-            int vote = stdin.nextInt();
-            if (vote == 0) {
-                break;
-            }
-            out.format("%d\n", vote);
-        }
+		for (int i = 0; true; i++) {
+			System.out.printf("Enter your #%d selection of the vote (0 to stop): ", i);
+			if (!stdin.hasNextInt()) {
+				break;
+			}
+			int vote = stdin.nextInt();
+			if (vote == 0) {
+				break;
+			}
+			out.format("%d\n", vote);
+		}
 
-        // Indicate termination
-        out.format("0\n");
+		// Indicate termination
+		out.format("0\n");
 
-        out.close();
-        System.out.println("You have successfully entered your votes, thank you!");
-    }
+		out.close();
+		System.out.println("You have successfully entered your votes, thank you!");
+	}
 }

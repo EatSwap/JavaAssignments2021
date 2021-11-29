@@ -12,11 +12,11 @@ public class Car implements CarbonFootprint {
 	private double daysToDrivePerYear;
 	private double yearsToDrive;
 
-    public Car(double footprintPerDay, double daysToDrivePerYear, double yearsToDrive) {
-        this.footprintPerDay = footprintPerDay;
-        this.daysToDrivePerYear = daysToDrivePerYear;
-        this.yearsToDrive = yearsToDrive;
-    }
+	public Car(double footprintPerDay, double daysToDrivePerYear, double yearsToDrive) {
+		this.footprintPerDay = footprintPerDay;
+		this.daysToDrivePerYear = daysToDrivePerYear;
+		this.yearsToDrive = yearsToDrive;
+	}
 
 	public double getFootprintPerDay() {
 		return footprintPerDay;

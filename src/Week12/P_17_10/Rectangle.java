@@ -1,7 +1,6 @@
 package Week12.P_17_10;
 
 import java.awt.*;
-import java.util.Objects;
 
 /**
  * Author: Lam Haoyin
