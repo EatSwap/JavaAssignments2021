@@ -1,7 +1,9 @@
 package Week12.P_17_10;
 
+import javax.swing.*;
 import java.awt.*;
-import java.util.Random;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseMotionListener;
 
 /**
  * Author: Lam Haoyin
@@ -12,73 +14,36 @@ import java.util.Random;
 
 public class DrawPanel extends javax.swing.JPanel {
 	private Shape[] shapes = null;
+	private int shapeCount = 0;
+	private int shapeType = 0;
+	private Shape currentShape = null;
+	private Color currentColor = Color.BLACK;
+	private boolean filledShape = false;
+	private JLabel statusLabel = null;
 
 	public DrawPanel(int linesCnt, int ovalsCnt, int rectanglesCnt) {
 		setBackground(java.awt.Color.WHITE);
-		shapes = new Shape[linesCnt + ovalsCnt + rectanglesCnt];
 
-		Random random = new Random();
-
-		for (int i = 0; i < linesCnt; i++) {
-			shapes[i] = new Line(
-				random.nextInt(300),
-				random.nextInt(300),
-				random.nextInt(300),
-				random.nextInt(300),
-				new Color(
-					random.nextInt(255),
-					random.nextInt(255),
-					random.nextInt(255)
-				)
-			);
-		}
-
-		for (int i = linesCnt; i < ovalsCnt + linesCnt; i++) {
-			shapes[i] = new Oval(
-				random.nextInt(300),
-				random.nextInt(300),
-				random.nextInt(300),
-				random.nextInt(300),
-				new Color(
-					random.nextInt(255),
-					random.nextInt(255),
-					random.nextInt(255)
-				),
-				random.nextInt(2) == 1
-			);
-
-		}
-
-		for (int i = linesCnt + ovalsCnt; i < shapes.length; i++) {
-			shapes[i] = new Rectangle(
-				random.nextInt(300),
-				random.nextInt(300),
-				random.nextInt(300),
-				random.nextInt(300),
-				new Color(
-					random.nextInt(255),
-					random.nextInt(255),
-					random.nextInt(255)
-				),
-				random.nextInt(2) == 1
-			);
-		}
 	}
 
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		for (Shape shape : shapes) {
-			shape.draw(g);
+		for (int i = 0; i < shapeCount; i++) {
+			shapes[i].draw(g);
 		}
 	}
 
-	public Shape[] getShapes() {
-		return shapes;
+	public void clearDrawing() {
+		shapeCount = 0;
+		repaint();
 	}
 
-	public void setShapes(Shape[] shapes) {
-		this.shapes = shapes;
+	public void clearLastShape() {
+		if (shapeCount > 0) {
+			shapeCount--;
+			repaint();
+		}
 	}
 
 	public String getStatus() {
@@ -94,4 +59,65 @@ public class DrawPanel extends javax.swing.JPanel {
 		}
 		return "Lines: " + L + ", Ovals: " + O + ", Rectangles: " + R;
 	}
+
+	public Shape[] getShapes() {
+		return shapes;
+	}
+
+	public void setShapes(Shape[] shapes) {
+		this.shapes = shapes;
+	}
+
+	public int getShapeCount() {
+		return shapeCount;
+	}
+
+	public void setShapeCount(int shapeCount) {
+		this.shapeCount = shapeCount;
+	}
+
+	public int getShapeType() {
+		return shapeType;
+	}
+
+	public void setShapeType(int shapeType) {
+		this.shapeType = shapeType;
+	}
+
+	public Shape getCurrentShape() {
+		return currentShape;
+	}
+
+	public void setCurrentShape(Shape currentShape) {
+		this.currentShape = currentShape;
+	}
+
+	public Color getCurrentColor() {
+		return currentColor;
+	}
+
+	public void setCurrentColor(Color currentColor) {
+		this.currentColor = currentColor;
+	}
+
+	public boolean isFilledShape() {
+		return filledShape;
+	}
+
+	public void setFilledShape(boolean filledShape) {
+		this.filledShape = filledShape;
+	}
+
+	public JLabel getStatusLabel() {
+		return statusLabel;
+	}
+
+	public void setStatusLabel(JLabel statusLabel) {
+		this.statusLabel = statusLabel;
+	}
+
+	class MouseUtilise extends MouseAdapter implements MouseMotionListener {
+
+	}
+
 }
