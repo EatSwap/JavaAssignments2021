@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 
 /**
  * Author: Lam Haoyin
@@ -13,9 +14,7 @@ import java.awt.event.MouseMotionListener;
  */
 
 public class DrawPanel extends javax.swing.JPanel {
-	private Shape[] shapes = null;
-
-	private int shapeCount = 0;
+	private ArrayList<Shape> shapes = new ArrayList<>();
 
 	// Line = 0
 	// Rectangle = 1
@@ -64,7 +63,7 @@ public class DrawPanel extends javax.swing.JPanel {
 			}
 		});
 
-		this.shapes = new Shape[100];
+		// this.shapes = new Shape[100];
 		this.addMouseListener(new MouseUtilise());
 		this.addMouseMotionListener(new MouseUtilise());
 	}
@@ -72,8 +71,8 @@ public class DrawPanel extends javax.swing.JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		for (int i = 0; i < shapeCount; i++) {
-			shapes[i].draw(g);
+		for (Shape shape : shapes) {
+			shape.draw(g);
 		}
 		if (currentShape != null) {
 			currentShape.draw(g);
@@ -81,29 +80,28 @@ public class DrawPanel extends javax.swing.JPanel {
 	}
 
 	public void clearDrawing() {
-		shapeCount = 0;
+		shapes.clear();
 		repaint();
 	}
 
 	public void clearLastShape() {
-		if (shapeCount > 0) {
-			shapeCount--;
+		if (shapes.size() > 0) {
+			shapes.remove(shapes.size() - 1);
 			repaint();
 		}
 	}
 
 	public String getStatus(int mouseX, int mouseY) {
 		int L = 0, O = 0, R = 0;
-		if (shapeCount > 0 && shapes != null) {
-			for (int i = 0; i < shapeCount; i++) {
-				if (shapes[i] == null) {
-					throw new NullPointerException("shapes[" + i + "] is null");
-				}
-				if (shapes[i] instanceof Line) {
+		if (shapes.size() > 0 && shapes != null) {
+			for (Shape shape : shapes) {
+				if (shape == null) {
+					// Do Nothing
+				} else if (shape instanceof Line) {
 					L++;
-				} else if (shapes[i] instanceof Rectangle) {
+				} else if (shape instanceof Rectangle) {
 					R++;
-				} else if (shapes[i] instanceof Oval) {
+				} else if (shape instanceof Oval) {
 					O++;
 				}
 			}
@@ -115,20 +113,12 @@ public class DrawPanel extends javax.swing.JPanel {
 		return getStatus(0, 0);
 	}
 
-	public Shape[] getShapes() {
+	public ArrayList<Shape> getShapes() {
 		return shapes;
 	}
 
-	public void setShapes(Shape[] shapes) {
+	public void setShapes(ArrayList<Shape> shapes) {
 		this.shapes = shapes;
-	}
-
-	public int getShapeCount() {
-		return shapeCount;
-	}
-
-	public void setShapeCount(int shapeCount) {
-		this.shapeCount = shapeCount;
 	}
 
 	public int getShapeType() {
@@ -212,7 +202,7 @@ public class DrawPanel extends javax.swing.JPanel {
 			if (currentShape != null) {
 				currentShape.setX2(e.getX());
 				currentShape.setY2(e.getY());
-				shapes[shapeCount++] = currentShape;
+				shapes.add(currentShape);
 				currentShape = null;
 				repaint();
 			}
