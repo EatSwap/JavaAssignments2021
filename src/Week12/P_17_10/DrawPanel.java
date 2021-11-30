@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseMotionListener;
+import java.io.*;
 import java.util.ArrayList;
 
 /**
@@ -58,12 +59,66 @@ public class DrawPanel extends javax.swing.JPanel {
 				case 10 -> setCurrentColor(Color.RED);
 				case 11 -> setCurrentColor(Color.WHITE);
 				case 12 -> setCurrentColor(Color.YELLOW);
-				default -> {
+			}
+		});
+		this.controlPanel.addSaveButtonListener(e -> {
+			JFileChooser fileChooser = new JFileChooser();
+			fileChooser.setDialogTitle("Save Drawing");
+			fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+			if (fileChooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+				boolean OK = false;
+				try {
+					FileOutputStream fos = new FileOutputStream(fileChooser.getSelectedFile());
+					ObjectOutputStream outputStream = new ObjectOutputStream(fos);
+					outputStream.writeObject(shapes);
+					OK = true;
+				} catch (IOException thisException) {
+					thisException.printStackTrace();
+				} finally {
+					if (OK) {
+						JOptionPane.showMessageDialog(this, "Drawing Saved Successfully");
+					} else {
+						JOptionPane.showMessageDialog(this, "Error Saving Drawing");
+					}
 				}
+			} else {
+				JOptionPane.showMessageDialog(this, "File not saved, because nothing was selected.");
 			}
 		});
 
-		// this.shapes = new Shape[100];
+		this.controlPanel.addLoadButtonListener(e -> {
+			JFileChooser fileChooser = new JFileChooser();
+			fileChooser.setDialogTitle("Load Drawing");
+			fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+			if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+				boolean OK = false;
+				try {
+					FileInputStream fis = new FileInputStream(fileChooser.getSelectedFile());
+					ObjectInputStream inputStream = new ObjectInputStream(fis);
+
+					Object toRead = inputStream.readObject();
+					if (toRead instanceof ArrayList) {
+						shapes = (ArrayList<Shape>) toRead;
+						repaint();
+					} else {
+						throw new IOException("File is not a drawing");
+					}
+
+					OK = true;
+				} catch (IOException | ClassNotFoundException thisException) {
+					thisException.printStackTrace();
+				} finally {
+					if (OK) {
+						JOptionPane.showMessageDialog(this, "Drawing Loaded Successfully");
+					} else {
+						JOptionPane.showMessageDialog(this, "Error Loading Drawing");
+					}
+				}
+			} else {
+				JOptionPane.showMessageDialog(this, "File not loaded, because nothing was selected.");
+			}
+		});
+
 		this.addMouseListener(new MouseUtilise());
 		this.addMouseMotionListener(new MouseUtilise());
 	}
@@ -106,7 +161,7 @@ public class DrawPanel extends javax.swing.JPanel {
 				}
 			}
 		}
-		return String.format("Mouse (%d, %d), Lines: %d, Rectangles: %d, Ovals: %d", mouseX, mouseY, L, R, O);
+		return String.format("Mouse (%3d, %3d) | Lines: %d, Rectangles: %d, Ovals: %d", mouseX, mouseY, L, R, O);
 	}
 
 	public String getStatus() {
@@ -167,6 +222,10 @@ public class DrawPanel extends javax.swing.JPanel {
 
 	public void setControlPanel(ControlPanel controlPanel) {
 		this.controlPanel = controlPanel;
+	}
+
+	private void saveDrawings(File dest) {
+
 	}
 
 	class MouseUtilise extends MouseAdapter implements MouseMotionListener {

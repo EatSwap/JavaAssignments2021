@@ -24,6 +24,9 @@ public class ControlPanel extends JPanel {
 	private JComboBox<String> colorComboBox = null;
 	private static final String[] colorStrings = { "Black", "Blue", "Cyan", "Dark Gray", "Gray", "Green", "Light Gray", "Magenta", "Orange", "Pink", "Red", "White", "Yellow" };
 
+	private JButton loadButton = null;
+	private JButton saveButton = null;
+
 	ControlPanel() {
 		super();
 
@@ -32,6 +35,8 @@ public class ControlPanel extends JPanel {
 		this.shapeComboBox = new JComboBox<>(shapeStrings);
 		this.filledCheckBox = new JCheckBox("Filled");
 		this.colorComboBox = new JComboBox<>(colorStrings);
+		this.loadButton = new JButton("Load");
+		this.saveButton = new JButton("Save");
 
 		this.setLayout(new FlowLayout(FlowLayout.CENTER));
 		this.add(this.undoButton);
@@ -39,6 +44,8 @@ public class ControlPanel extends JPanel {
 		this.add(this.shapeComboBox);
 		this.add(this.filledCheckBox);
 		this.add(this.colorComboBox);
+		this.add(this.loadButton);
+		this.add(this.saveButton);
 	}
 
 	void addUndoButtonListener(ActionListener listener) {
@@ -59,6 +66,14 @@ public class ControlPanel extends JPanel {
 
 	void addColorComboBoxListener(ActionListener listener) {
 		this.colorComboBox.addActionListener(listener);
+	}
+
+	void addLoadButtonListener(ActionListener listener) {
+		this.loadButton.addActionListener(listener);
+	}
+
+	void addSaveButtonListener(ActionListener listener) {
+		this.saveButton.addActionListener(listener);
 	}
 
 	public JButton getUndoButton() {

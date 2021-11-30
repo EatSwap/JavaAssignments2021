@@ -24,7 +24,7 @@ public class TestDraw {
 		frame.add(drawPanel, BorderLayout.CENTER);
 		frame.add(statusBar, BorderLayout.SOUTH);
 
-		frame.setSize(500, 500);
+		frame.setSize(700, 500);
 		frame.setVisible(true);
 	}
 }

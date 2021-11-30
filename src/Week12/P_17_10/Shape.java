@@ -1,6 +1,7 @@
 package Week12.P_17_10;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Objects;
  * Project: JavaAssignments2021
  */
 
-public abstract class Shape {
+public abstract class Shape implements Serializable {
 	private int x1;
 	private int y1;
 	private int x2;
