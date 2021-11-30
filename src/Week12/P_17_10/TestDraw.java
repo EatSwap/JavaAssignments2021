@@ -1,6 +1,7 @@
 package Week12.P_17_10;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Author: Lam Haoyin
@@ -13,26 +14,17 @@ public class TestDraw {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
 
-
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		JOptionPane pane = new JOptionPane();
-		String linesCnt = JOptionPane.showInputDialog(pane, "Enter the number of lines you want to draw");
-		int lines = Integer.parseInt(linesCnt);
+		JLabel statusBar = new JLabel();
+		ControlPanel controlPanel = new ControlPanel();
+		DrawPanel drawPanel = new DrawPanel(statusBar, controlPanel);
 
-		String ovalsCnt = JOptionPane.showInputDialog(pane, "Enter the number of ovals you want to draw");
-		int ovals = Integer.parseInt(ovalsCnt);
+		frame.add(controlPanel, BorderLayout.NORTH);
+		frame.add(drawPanel, BorderLayout.CENTER);
+		frame.add(statusBar, BorderLayout.SOUTH);
 
-		String rectsCnt = JOptionPane.showInputDialog(pane, "Enter the number of rectangles you want to draw");
-		int rects = Integer.parseInt(rectsCnt);
-
-		frame.setSize(300, 300);
-		frame.setVisible(true);
-
-		DrawPanel panel = new DrawPanel(lines, ovals, rects);
-		frame.add(panel);
-		JLabel statusBar = new JLabel(panel.getStatus());
-		frame.add(statusBar, "South");
+		frame.setSize(500, 500);
 		frame.setVisible(true);
 	}
 }
