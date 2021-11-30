@@ -15,6 +15,7 @@ public class TestDraw {
 		JFrame frame = new JFrame();
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setTitle("A Naive Drawing Tool");
 
 		JLabel statusBar = new JLabel();
 		ControlPanel controlPanel = new ControlPanel();

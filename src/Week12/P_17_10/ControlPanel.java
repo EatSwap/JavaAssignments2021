@@ -12,18 +12,13 @@ import java.awt.event.ActionListener;
  */
 
 public class ControlPanel extends JPanel {
+	private static final String[] shapeStrings = {"Line", "Rectangle", "Oval"};
+	private static final String[] colorStrings = {"Black", "Blue", "Cyan", "Dark Gray", "Gray", "Green", "Light Gray", "Magenta", "Orange", "Pink", "Red", "White", "Yellow"};
 	private JButton undoButton = null;
-
 	private JButton clearButton = null;
-
 	private JComboBox<String> shapeComboBox = null;
-	private static final String[] shapeStrings = { "Line", "Rectangle", "Oval" };
-
 	private JCheckBox filledCheckBox = null;
-
 	private JComboBox<String> colorComboBox = null;
-	private static final String[] colorStrings = { "Black", "Blue", "Cyan", "Dark Gray", "Gray", "Green", "Light Gray", "Magenta", "Orange", "Pink", "Red", "White", "Yellow" };
-
 	private JButton loadButton = null;
 	private JButton saveButton = null;
 
