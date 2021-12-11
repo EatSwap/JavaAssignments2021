@@ -67,10 +67,10 @@ public class Invoice implements Payable {
 	@Override
 	public String toString() {
 		return String.format("%s: %n%s: %s (%s) %n%s: %d %n%s: $%,.2f",
-				"invoice",
-				"part number", getPartNumber(), getPartDescription(),
-				"quantity", getQuantity(),
-				"price per item", getPricePerItem());
+			"invoice",
+			"part number", getPartNumber(), getPartDescription(),
+			"quantity", getQuantity(),
+			"price per item", getPricePerItem());
 	}
 
 	@Override
@@ -81,9 +81,9 @@ public class Invoice implements Payable {
 		}
 		Invoice invoice = (Invoice) o;
 		return partNumber.equals(invoice.partNumber) &&
-				partDescription.equals(invoice.partDescription) &&
-				quantity == invoice.quantity &&
-				Double.compare(pricePerItem, invoice.pricePerItem) == 0;
+			partDescription.equals(invoice.partDescription) &&
+			quantity == invoice.quantity &&
+			Double.compare(pricePerItem, invoice.pricePerItem) == 0;
 	}
 
 	@Override

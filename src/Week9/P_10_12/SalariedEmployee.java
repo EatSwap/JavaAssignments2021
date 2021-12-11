@@ -39,7 +39,7 @@ public class SalariedEmployee extends Employee {
 	@Override
 	public String toString() {
 		return "SalariedEmployee{" +
-				"weeklySalary=" + weeklySalary +
-				"} " + super.toString();
+			"weeklySalary=" + weeklySalary +
+			"} " + super.toString();
 	}
 }

@@ -30,7 +30,7 @@ public class Bicycle implements CarbonFootprint {
 	@Override
 	public String toString() {
 		return "Bicycle{" +
-				"footprintToProduce=" + footprintToProduce +
-				'}';
+			"footprintToProduce=" + footprintToProduce +
+			'}';
 	}
 }

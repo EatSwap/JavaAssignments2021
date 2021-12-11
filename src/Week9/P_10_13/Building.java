@@ -50,9 +50,9 @@ public class Building implements CarbonFootprint {
 	@Override
 	public String toString() {
 		return "Building{" +
-				"name='" + name + '\'' +
-				", footprintPerYear=" + footprintPerYear +
-				", yearsToUse=" + yearsToUse +
-				'}';
+			"name='" + name + '\'' +
+			", footprintPerYear=" + footprintPerYear +
+			", yearsToUse=" + yearsToUse +
+			'}';
 	}
 }
