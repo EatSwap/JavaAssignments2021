@@ -1,4 +1,4 @@
-package ExperimentA;
+package ExperimentA.Task2;
 
 /**
  * Author: Lam Haoyin
