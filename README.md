@@ -11,3 +11,5 @@ public class JavaAssignments2021 {
 ```
 
 Licensed under the [GNU GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html) license.
+
+This repository has entered maintenance mode. (12/12/2021)
